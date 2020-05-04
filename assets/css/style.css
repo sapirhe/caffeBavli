@@ -1,0 +1,574 @@
+body{
+    direction: rtl;
+    text-align: right;
+
+}
+.tablet {
+    position: relative;
+    width: 768px;
+    height: 1024px;
+    margin: auto;
+    border: 16px black solid;
+    border-top-width: 60px;
+    border-bottom-width: 60px;
+    border-radius: 36px;
+    background-color: #FFEBCD;
+}
+.tablet:before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 5px;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 10px;
+}
+
+.tablet:after {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 50%;
+    bottom: -65px;
+    transform: translate(-50%, -50%);
+    background: #333;
+    border-radius: 50%;
+}
+main{
+    direction: rtl;
+    text-align: right;
+    overflow: auto;
+    height: 570px;
+    overflow-x: hidden;
+}
+header{
+    direction: rtl;
+    text-align: right;
+}
+footer{
+    direction: rtl;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    color:black;
+    font-weight: bold;
+    font-family: cursive;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+.inputWrapper{
+    padding:2%;
+    overflow:auto;
+}
+.formInput{
+    float:right;
+    width:95%;
+}
+legend{
+    text-align: center;
+    font-weight: bold;
+}
+input {
+    width: 60%;
+    margin-bottom: 3%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+select{
+    height: 50px;
+    border-radius: 4%;
+    border: 1px solid lightgrey;
+}
+textarea {
+    width: 60%;
+    margin-bottom: 3%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+#addEmp{
+    float:right;
+    width:95%;
+    margin-bottom: 3%;
+    background-color: F4A460;   
+    font-weight: bold;
+}
+#signin{
+    float:right;
+    width:95%;
+    margin-bottom: 3%;
+    background-color: F4A460;   
+    font-weight: bold;
+    color: white;
+}
+#error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+}
+#hello{
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    color: F4A460;
+}
+.icon {
+    padding: 10px;
+    color: F4A460;
+    font-size: 100px;
+    text-align: center;
+    width: 100%;
+}
+#signInForm{
+    overflow-x: hidden;
+}
+.sgnIcn{
+    margin-top: 10%;
+}
+#caffeBavliImg{
+    width:155px;
+    height: 160px;
+}
+.line{
+    width: 90%;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+nav a {
+    float:center;
+    background-color:none;
+    color:black ;
+    text-align:center;
+    padding:20px 20px;
+    margin:20px;
+    text-decoration:none;
+    font-size:17px;
+    height: 15px;
+}
+nav ul{
+    padding-right: 0px;
+}
+.proBtn{
+    width: 150px;
+    height: 150px;
+    margin-right: 9%;
+    margin-bottom: 3%;
+    border: DCDCDC solid thin;
+    border-radius: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    position: relative;
+    padding-top: 100px;
+}
+.proBtn a{
+    color: black;
+    position: absolute;
+    width:100%;
+    bottom: 10;
+    right: 5;
+
+}
+#prepOrd{
+    background-color: b5e7a0;
+    background-image: url("../Images/הזמנות להכנה.jpg");
+    background-size: 110px;
+}
+#mealMng{
+    background-color: LightPink;
+    background-image: url("../Images/ניהול ארוחה.jpg");
+    background-size: 110px;
+}
+#saveTbl{
+    background-color: f2e394;
+    background-image: url("../Images/שריון שולחן.jpg");
+    background-size: contain;
+}
+#resTbl{
+    background-color: DarkSalmon;
+    background-image: url("../Images/שולחנות מוזמנים.jpg");
+    background-size: contain;
+}
+#addNewEmp{
+    background-color: b5e7a0;
+    background-image: url("../Images/הוספת עובד חדש.jpg");
+    background-size: 125px;
+}
+#foodValueApi{
+    background-color: b8a9c9;
+    background-image: url("../Images/פרמידת המזון.jpg");
+    background-size: 110px;
+}
+#menuEdit{
+    background-color: b7d7e8;
+    background-image: url("../Images/עריכת תפריט.jpg");
+    background-size:90px;
+}
+#empMng{
+    background-color: CD5C5C;
+    background-image: url("../Images/ניהול עובדים.jpg");
+    background-size:90px;
+}
+.addNewEmpInput{
+    height: 35px;
+}
+i{
+    margin-left: 7px;
+}
+#updateMenu{
+    background-color: b5e7a0;
+    background-image: url("../Images/עדכון תפריט.jpg");
+    background-size:105px;   
+    background-position: 30px 15px;
+
+}
+#addItem{
+    background-color: LightPink;
+    background-image: url("../Images/הוספת פריט.jpg");
+    background-size:100px;
+    background-position: center 12px;
+}
+.submitBtn{
+    float:right;
+    width:95%;
+    margin-bottom: 3%;
+    background-color: F4A460;   
+    font-weight: bold;
+    color: white;
+}
+.tab {
+    overflow: hidden; 
+}
+.tab button {
+    display: block;
+    background-color: DimGray ;
+    opacity: 0.8;
+    color: white;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+
+}
+.tab button:hover {
+    background-color: darkgray;
+}
+.tab button.active {
+    background-color: darkgray;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: rgba(255,255,255, 0.7);
+    animation: fadeEffect 1s;
+    overflow: auto;
+    height: 535px;
+    position: absolute;
+    text-align: center;
+}
+.tabs{
+    margin-bottom: 10%;
+}
+.area{
+    display: inline-block;
+    width: 45%;
+    margin-right: 3%;
+    border: 4px solid darkgray;
+    padding-bottom: 3%;
+}
+h4{
+    text-align: center;
+}
+.tblBtn{
+    width: 80px;
+    height: 80px;
+    margin-right: 16%;
+    margin-top: 5%;
+    border: 3px solid darkgray;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.occupied{
+    background-color: red;
+}
+.tab{
+    display: inline-block;
+    width: 15%;
+}
+#orderItems{
+    text-align: center;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: rgba(255,255,255, 0.7);
+    animation: fadeEffect 1s;
+    overflow: auto;
+    position: absolute;
+    display: relative;
+    left: 30px;
+    top:285px;
+    height: 535px;
+}
+.itemBtn{
+    width: 250px;
+    height: 80px;
+    margin-right: 4%;
+    margin-top: 1%;
+    border: 2px solid darkgray;
+    font-weight: bold;
+    font-size: 20px;
+}
+.orderBtn{
+    width: 100px;
+    height: 100px;
+    bottom: 50px;
+    font-weight: bold;
+}
+.buttonsOrder{
+    bottom: 12px;
+    position: absolute;
+    margin-right: 3%;
+}
+.buttons{
+    border: DCDCDC solid thin;
+    border-radius: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+#send{
+    background-image: url("../Images/שלח להכנה.jpg");
+    background-size: contain;
+}
+#pay{
+    background-image: url("../Images/בצע תשלום.jpg");
+}
+.remove{
+    background-image: url("../Images/מחיקה.jpg");
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+}
+.update{
+    background-image: url("../Images/עריכה.jpg");
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 35px;
+    height: 35px;
+}
+.itemInOrderTxt{
+    display: inline-block;
+
+}
+.deleteFromOrder{
+    background-image: url("../Images/מחיקת פריט מההזמנה.jpg");
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 25px;
+    height: 25px;
+}
+.notesForItem{
+    font-size: 12px;
+}
+.title{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;;
+}
+.linePrep{
+    border:SlateGrey 1px solid;
+    width:80%;
+}
+.itemTitle{
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.itemInfo{
+    text-align: center;
+}
+.orderComplete{
+    position: absolute;
+    left: 70px;
+    top:15px;
+    border: 2px solid SlateGrey;
+    width: 90px;
+    height: 30px;
+    background-image: url("../Images/בוצע.jpg");
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-color: #F5F5F5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.orderInfo{
+    position: relative;
+}
+#list{
+    height: 235px;
+    overflow: auto;
+}
+#totalPrice{
+    position: absolute;
+    bottom: 125px;
+    text-align: center;
+    width: 90%;
+    font-weight: bold;
+}
+.tabpay button{
+    display: inline-block;
+    background-color: DimGray ;
+    opacity: 0.8;
+    color: white;
+    padding: 22px 16px;
+    width: 47%;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.tabpay{
+    position: absolute;
+    margin-right: 17px;
+}
+.contentPay{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color: rgba(255,255,255, 0.7);
+    animation: fadeEffect 1s;
+    overflow: auto;
+    height: 480px;
+    position: absolute;
+    text-align: center;
+    margin-right: 27px;
+}
+#payImg{
+    background-image: url("../Images/שטרות.jpg");
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+
+}
+.payLbl{
+    width: 30%;
+    display: inline-block;
+    font-weight: bold;
+}
+#calcChange{
+    position: absolute;
+    left:40px;
+    bottom: 165px;
+}
+.payBtn{
+    background-color: green;
+    font-weight: bold;
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: white;
+}
+.payInput{
+    height: 40px;
+}
+#creditImg{
+    background-image: url("../Images/פייפאל.jpg");
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    margin-top: 20px;
+}
+.cardLab{
+    width:100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    height: 40px;
+}
+.cardLbl{
+    width: 35%;
+}
+#total_price{
+    margin-bottom: 1%;
+}
+.dateLbl{
+    margin-bottom: 0%;
+    margin-top: 0%;
+}
+#creditPay{
+    margin-top: 1.2%;
+}
+#showTotalPrice{
+    color: DodgerBlue;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 18px;
+}
+#payPalPay{
+    width: 100px;
+    height: 40px;
+    padding: 0;
+}
+.itemValuesArea{
+    text-align: center;
+}
+.itemValuesTitle{
+    font-family: cursive;
+    font-weight: bold;
+    color: red;
+}
+.itemValiesImg{
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#query{
+    width: 64%;
+}
+#editEmp{
+    background-color: LightPink;
+    background-image: url("../Images/עריכת עובדים.jpg");
+    background-size: 85px;
+}
+#datetime{
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    font-weight: bold;
+}
