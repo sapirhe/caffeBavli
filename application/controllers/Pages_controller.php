@@ -6,6 +6,7 @@ class Pages_controller  extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('Login_model');
+                $this->load->model('Pages_model');
                 $this->load->helper('url_helper');
                 $this->load->helper('form');
                 $this->load->library('session');
@@ -41,6 +42,26 @@ class Pages_controller  extends CI_Controller {
         
         $this->load->view('templates/header',$data);
         $this->load->view('pages/employeesManagement', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    public function statistics(){
+        $data['title'] ='Statistics';
+        $data['user']=$this->session->all_userdata();
+        
+        $month=date('Y-m-d', strtotime('-30 days')); 
+        $year=date('Y-m-d', strtotime('-365 days'));
+        $data['sectionPie30']= $this->Pages_model->getStatisticsSections($month);
+        $data['sectionPieYear']= $this->Pages_model->getStatisticsSections($year);
+        $data['IncomingCahrt30']=$this->Pages_model->getStatisticsIncoming30($month);
+        $data['IncomingCahrtYear']=$this->Pages_model->getStatisticsIncomingYear($year);
+        $data['leastSoldItems30']=$this->Pages_model->getLeastSoldItems($month);
+        $data['mostSoldItems30']=$this->Pages_model->getMostSoldItems($month);
+        $data['leastSoldItemsYear']=$this->Pages_model->getLeastSoldItems($year);
+        $data['mostSoldItemsYear']=$this->Pages_model->getMostSoldItems($year);
+        
+      
+        $this->load->view('templates/header',$data);
+        $this->load->view('pages/statistics', $data);
         $this->load->view('templates/footer', $data);
     }
 }

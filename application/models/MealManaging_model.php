@@ -72,8 +72,8 @@ class MealManaging_model extends CI_Model {
     }
 
     public function setItemInOrder($data) {
-        $this->db->query("insert into itemInOrder (order_number, item_name, notes, sent) values('" . $data['order_number'] . "','" . $data['item_name'] . "','" . $data['notes'] . "','לא נשלח' )");
-        $item_number = $this->db->query("select MAX(item_number) from itemInOrder");
+        $this->db->query("insert into iteminorder (order_number, item_name, notes, sent) values('" . $data['order_number'] . "','" . $data['item_name'] . "','" . $data['notes'] . "','לא נשלח' )");
+        $item_number = $this->db->query("select MAX(item_number) from iteminorder");
         if ($item_number) {
             return $item_number->result_array();
         }
@@ -81,7 +81,7 @@ class MealManaging_model extends CI_Model {
     }
 
     public function getOrderItems($order_number) {
-        $query = $this->db->query("select * from itemInOrder where order_number='" . $order_number . "'");
+        $query = $this->db->query("select * from iteminorder where order_number='" . $order_number . "'");
 
         if ($query) {
             return $query->result_array();

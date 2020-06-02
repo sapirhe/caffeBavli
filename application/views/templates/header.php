@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -13,15 +14,19 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" language="javascript" ></script>
+        <script src="js/appParse.js" type="text/javascript" language="javascript" ></script>
+        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="css/style.css" type="text/css" rel="stylesheet" />
     </head>
     <body onload="startTime()">
         <div class="tablet">
             <header>
                 <span id="datetime"></span>
 
-                <img id="caffeBavliImg" class="center" src='<?php echo base_url() . "assets/Images/קפה בבלי לוגו.jpg"; ?>'>
+                <img id="caffeBavliImg" class="center" src='<?php echo base_url() . "assets/Images/caffeBavliLogo.jpg"; ?>'>
 
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand">
                     <div class="container-fluid">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" id="goBack">
@@ -97,7 +102,7 @@ if ($userCheck == null) {
                     m = checkTime(m);
                     s = checkTime(s);
                     document.getElementById('datetime').innerHTML =
-                            h + ":" + m + ":" + s+" "+(("0" + dt.getDate()).slice(-2)) + "." + (("0" + (dt.getMonth() + 1)).slice(-2)) + "." + (dt.getFullYear()) ;
+                            h + ":" + m + ":" + s + " " + (("0" + dt.getDate()).slice(-2)) + "." + (("0" + (dt.getMonth() + 1)).slice(-2)) + "." + (dt.getFullYear());
                     var t = setTimeout(startTime, 500);
                 }
                 function checkTime(i) {
