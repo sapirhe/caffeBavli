@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <button class="proBtn" id="updateMenu" onclick="updateMenu()"><b>עדכון תפריט</b></button>
     <button class="proBtn" id="addItem" onclick="addItem()"><b>הוספת פריט</b></button>
     

@@ -62,11 +62,6 @@ class MealManaging_controller extends CI_Controller {
 
         $itemNumber = $this->MealManaging_model->setItemInOrder($gotData);
         $data['tab_id'] = $this->input->post('tab_id');
-//        if ($itemNumber != NULL) {
-//            $data['$itemNumber'] = $itemNumber[0]['MAX(item_number)'];
-//        } else {
-//            $data['$itemNumber'] = 0;
-//        }
         echo $data['tab_id'];
     }
 
@@ -119,8 +114,8 @@ class MealManaging_controller extends CI_Controller {
     public function payment() {
         $data['title'] = 'Orders To Preper';
         $data['user'] = $this->session->all_userdata();
-        $orderNumber = $this->input->get('order_number');
-        $data['order_sum'] = $this->MealManaging_model->getOrderSum($orderNumber);
+        $data['orderNumber'] = $this->input->get('order_number');
+        $data['order_sum'] = $this->MealManaging_model->getOrderSum($data['orderNumber']);
         $data['table_number'] = $this->input->get('table_number');
 
         $this->load->view('templates/header', $data);
@@ -128,5 +123,67 @@ class MealManaging_controller extends CI_Controller {
         $this->load->view('templates/footer', $data);
     }
 
+    public function getMailForReceipt() {
+        $data['title'] = 'Send Reciept';
+        $data['user'] = $this->session->all_userdata();
+        $data['total']=$this->input->get('total');
+        $data['order_number']=$this->input->get('order_number');
+        $data['table_number']=$this->input->get('table_number');
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('mealManaging/getMailForReciept', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function validateMailNotes() {
+        if ($_POST) {
+            $error = "";
+            if ($_POST['emailForReceipt'] && !filter_var($_POST['emailForReceipt'], FILTER_VALIDATE_EMAIL)) {
+                $error .= "האימייל אינו תקין" . '<br>';
+            }
+        }
+        if ($error == "") {
+            echo "1";
+        } else {
+            echo $error;
+        }
+    }
+
+    public function sendReceipt() {
+        $emailForReceipt = $this->input->get('emailForReceipt');
+        $total=$this->input->get('total');
+        $order_number=$this->input->get('order_number');
+        $table_number=$this->input->get('table_number');
+        $to = $emailForReceipt;
+        $subject = "קפה בבלי - קבלה מיום ".date('Y-m-d');
+
+        $message = "
+<html>
+<head>
+<title>קפה בבלי - קבלה מיום ". date('d-m-y') ."</title>
+</head>
+<body>
+<div style='text-align: center; border: 5px double red;'>
+<h2>קפה בבלי - קבלה מיום ". date('d-m-y') ."</h2>
+<h5>תודה שביקרת ב'קפה בבלי', שמחנו לארח אותך!</h5>
+<p>
+סך התשלום שהתקבל: <b>".$total. " ש''ח</b><br>
+</P>
+<h5>נשמח לראותך שוב בקרוב,<br>קפה בבלי (:</h5>
+</div>
+</body>
+</html>
+";
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        $headers .= 'From: caffebavli@gmail.com';
+
+        mail($to, $subject, $message, $headers);
+        
+        redirect("MealManaging_controller/payment?table_number=" . $table_number . "&order_number=" . $order_number);
+        
+    }
 
 }

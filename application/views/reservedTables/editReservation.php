@@ -1,5 +1,9 @@
 <main>
-
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <p id="error"></p>
     <?php echo form_open('ReservesTables_controller/editReservationNotes'); ?>
     <fieldset class="center">
@@ -20,7 +24,31 @@
 
         <div class="inputWrapper"><input id="goToChooseTbl" class="submitBtn col-5" type="button" value="לבחירת שולחן חדש" name="submitItem" >
             <input id="submitNewReservation" class="submitBtn col-5" type="button" value="שמירת הנתונים כעת" name="submitItem" ></div>
-            <?php echo form_close(); ?>
+    </fieldset>
+    <?php echo form_close(); ?>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="editResSuccessModal" class="btn btn-info btn-lg disableModalBtn" data-toggle="modal" data-target="#myModal" hidden="hidden"></button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title">אישור</h4></center>
+                </div>
+                <div class="modal-body">
+                    <center><p>השינויים נשמרו בהצלחה</p></center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-success" data-dismiss="modal" onclick="window.location.href = '<?php echo site_url('ReservedTables_controller/reservedTablesList'); ?>'"><b>אישור</b></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </main>
 <script>
     $("#submitNewReservation").click(function () {
@@ -42,9 +70,7 @@
             },
             success: function (data) {
                 if (data === "1") {
-                    alert("השינויים נשמרו בהצלחה");
-                    //             window.location.href = "<?php echo site_url(); ?>/ReservedTables_controller/tablesToChoose?reservation_number=" + data + "&location=" + location + "&diners_number=" + diners_number + "";
-                    window.location.href = "<?php echo site_url('ReservedTables_controller/reservedTablesList'); ?>";
+                    $('#editResSuccessModal').click();
                 }
                 else {
                     $("#error").html(data);
@@ -67,7 +93,7 @@
         var new_diners_number = $("#new_diners_number").val();
         var new_table_number = $("#table_number").val();
         var new_location = document.querySelector('input[name="new_location"]:checked').value;
-        var notes =$("#order_notes").val();
+        var notes = $("#order_notes").val();
 
         $.ajax({
             type: 'POST',

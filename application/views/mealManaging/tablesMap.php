@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <div class="area">
         <h4>בפנים</h4>
         <?php foreach ($insideTables as $tbl) { ?>

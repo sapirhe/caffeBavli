@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <h3 class="title">הזמנות להכנה</h3>
 
     <?php

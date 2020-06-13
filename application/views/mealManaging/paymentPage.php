@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <div class="col-12 tab tabPay">
         <button class="tablinks active" onclick="openInfo(event, 'cash')" id="defaultOpen">מזומן</button>
         <button class="tablinks " onclick="openInfo(event, 'credit')">PayPal</button>
@@ -16,6 +21,7 @@
                 <div class="inputWrapper"><label class="payLbl"> סך העודף: </label><input class="payInput" type="text" id="change" name="change" readonly></div>
 
                 <div class="inputWrapper"><button id="cashPay" class="payBtn" onclick= "window.location.href = '<?php echo site_url() . "/MealManaging_controller/closingOrder?table_number=" . $table_number; ?>'">בצע תשלום</button></div>
+                <a href="#" onclick="goToEmailForReceipt(<?php echo $order_sum[0]['sum(price)'].",".$table_number.",".$orderNumber; ?>)"><b>לשליחת חשבונית למייל הלקוח/ה</b></a>
             </fieldset>
 
         </div>
@@ -25,10 +31,12 @@
     <div id="credit" class="col-11 tabcontent contentPay">
         <div id="creditImg"></div>
         <div class="center">
-            <br><h5>לקוח יקר, סרוק את הברקוד לתשלום באמצעות PayPal</h5><br>
+            <br><h5>לקוח יקר, סרוק את הברקוד לתשלום באמצעות PayPal</h5>
             <center><div id="qrcode"></div></center>
             <p id="showTotalPrice">סה"כ לתשלום: <?php echo $order_sum[0]['sum(price)']; ?> ש"ח</p>
-            <button class="payBtn" id="payPalPay" onclick= "window.location.href = '<?php echo site_url() . "/MealManaging_controller/closingOrder?table_number=" . $table_number; ?>'">בוצע</button>
+            <div class="inputWrapper"><button class="payBtn" id="payPalPay" onclick= "window.location.href = '<?php echo site_url() . "/MealManaging_controller/closingOrder?table_number=" . $table_number; ?>'">בוצע</button></div>
+            <a href="#" onclick="goToEmailForReceipt(<?php echo $order_sum[0]['sum(price)']; ?>)"><b>לשליחת חשבונית למייל הלקוח/ה</b></a>
+
         </div>
     </div>
 
@@ -68,6 +76,10 @@
         var received_money = parseInt($("#received_money").val());
         var change = received_money - total_price;
         document.getElementById("change").value = change;
+    }
+
+    function goToEmailForReceipt(total, table_number, order_number) {
+        window.location.href = '<?php echo site_url(); ?>/MealManaging_controller/getMailForReceipt?total=' + total + '&order_number='+ order_number +'&table_number='+table_number+'';
     }
 
 </script>

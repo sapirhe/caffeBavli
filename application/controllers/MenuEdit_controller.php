@@ -69,7 +69,7 @@ class MenuEdit_controller extends CI_Controller {
                 $error.="שם המנה יכול להכיל אותיות בשפה העברית בלבד" . '<br>';
             }
             if ($_POST['description']) {
-                if (!preg_match("/^[0-9א-ת .,!]*$/", $_POST['description'])) {
+                if (!preg_match("/^[0-9א-ת .,!()-]*$/", $_POST['description'])) {
                     $error.="תיאור המנה לא יכול להכיל אותיות בשפה האנגלית " . '<br>';
                 }
             }
@@ -112,7 +112,7 @@ class MenuEdit_controller extends CI_Controller {
             if ($check == NULL) {
                 echo "1";
             } else {
-                echo "הפריט קיים בתפריט";
+                echo "לא ניתן לשמור את השינויים";
             }
         } else {
             echo $validate;
@@ -129,7 +129,7 @@ class MenuEdit_controller extends CI_Controller {
                 $error.="שם המנה יכול להכיל אותיות בשפה העברית בלבד" . '<br>';
             }
             if ($_POST['new_description']) {
-                if (!preg_match("/^[0-9א-ת ,.!]*$/", $_POST['new_description'])) {
+                if (!preg_match("/^[0-9א-ת ,.!()-]*$/", $_POST['new_description'])) {
                     $error.="תיאור המנה לא יכול להכיל אותיות בשפה האנגלית " . '<br>';
                 }
             }

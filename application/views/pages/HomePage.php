@@ -1,16 +1,32 @@
 <main>
-    <?php if ($user['user'][0]['type'] != "מלצר") { 
-        echo'<button id="prepOrd" class="proBtn" onclick="prepOrd()"><b> הזמנות להכנה</a></button>';} ?>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+
+    if ($user['user'][0]['type'] != "מלצר") {
+        echo'<button id="prepOrd" class="proBtn" onclick="prepOrd()"><b> הזמנות להכנה</a></button>';
+    }
+    ?>
     <button class="proBtn" id="mealMng" onclick="mealMng()"><b>ניהול ארוחה</b></button>
     <button class="proBtn" id="saveTbl" onclick="saveTbl()"><b>שריון שולחן</b></button>
-<button class="proBtn" id="resTbl" onclick="resTbl()"><b> שולחנות מוזמנים</b></button>
-<?php if ($user['user'][0]['type'] != "מלצר") {
-    echo '<button class="proBtn" id="empMng" onclick="empMng()"><b>ניהול העובדים</b></button>';} ?> 
-<?php if ($user['user'][0]['type'] != "מלצר") {
-    echo '<button class="proBtn" id="menuEdit" onclick="menuEdit()"><b>עריכת התפריט</b></button>';} ?> 
+    <button class="proBtn" id="resTbl" onclick="resTbl()"><b> שולחנות מוזמנים</b></button>
+    <?php
+    if ($user['user'][0]['type'] != "מלצר") {
+        echo '<button class="proBtn" id="empMng" onclick="empMng()"><b>ניהול העובדים</b></button>';
+    }
+    ?> 
+    <?php
+    if ($user['user'][0]['type'] != "מלצר") {
+        echo '<button class="proBtn" id="menuEdit" onclick="menuEdit()"><b>עריכת התפריט</b></button>';
+    }
+    ?> 
     <button class="proBtn" id="foodValueApi" onclick="foodValueApi()"><b> ערכים תזונתיים</b></button>
-<?php if ($user['user'][0]['type'] != "מלצר") {
-    echo '<button class="proBtn" id="statistics" onclick="statistics()"><b> סטטיסטיקות</b></button>';} ?> 
+    <?php
+    if ($user['user'][0]['type'] != "מלצר") {
+        echo '<button class="proBtn" id="statistics" onclick="statistics()"><b> סטטיסטיקות</b></button>';
+    }
+    ?> 
 </main>
 
 

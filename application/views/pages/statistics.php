@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <h3 class="title">סטטיסטיקות</h3>
 
     <div class="col-12 tab tabPay">
@@ -8,16 +13,17 @@
 
     <!-- Tab content -->
     <div id="30days" class="col-11 tabcontent contentStatistics">
-        <br><h5>נתוני ההכנסות של 30 הימים האחרונים</h5>
+        <br><h4>נתוני ההכנסות של 30 הימים האחרונים</h4>
+        <p>ממוצע ההכנסות ב- 30 הימים האחרונים:<b> <?php echo number_format((float) $avgIncomig30, 2, '.', '') . ' ש"ח'; ?></b></p>
         <center><div id="incomingchart30" class="charts"></div>
-        <br><h5>סטטיסטיקת הרכישות על פי מחלקות </h5>
-        <div id="piechart30" class="charts"></div></center><br>
+            <br><h4>סטטיסטיקת הרכישות על פי מחלקות </h4>
+            <div id="piechart30" class="charts"></div></center><br>
         <div class="col-5 itemsList">
             <table class="table container cent">
-                <h5>הכי פחות נמכרים</h5>
+                <h4>הכי פחות נמכרים</h4>
                 <tbody>
                     <?php
-                    $i=1;
+                    $i = 1;
                     foreach ($leastSoldItems30 as $row) {
                         ?>
                         <tr>
@@ -31,13 +37,13 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="col-5 itemsList">
             <table class="table container cent">
-                <h5>הנמכרים ביותר</h5>
+                <h4>הנמכרים ביותר</h4>
                 <tbody>
                     <?php
-                    $i=1;
+                    $i = 1;
                     foreach ($mostSoldItems30 as $row) {
                         ?>
                         <tr>
@@ -56,16 +62,17 @@
     </div>
 
     <div id="year" class="col-11 tabcontent contentStatistics">
-        <center><br><h5>נתוני ההכנסות של השנה האחרונה</h5>
-        <div id="incomingchartyear" class="charts"></div>
-        <br><h5>סטטיסטיקת הרכישות על פי מחלקות </h5>
-        <div id="piechartyear" class="charts"></div></center><br>
+        <center><br><h4>נתוני ההכנסות של השנה האחרונה</h4>
+            <p>ממוצע ההכנסות בשנה האחרונה:<b> <?php echo number_format((float) $avgIncomigYear, 2, '.', '') . ' ש"ח'; ?></b></p>
+            <div id="incomingchartyear" class="charts"></div>
+            <br><h4>סטטיסטיקת הרכישות על פי מחלקות </h4>
+            <div id="piechartyear" class="charts"></div></center><br>
         <div class="col-5 itemsList">
             <table class="table container cent">
-                <h5>הכי פחות נמכרים</h5>
+                <h4>הכי פחות נמכרים</h4>
                 <tbody>
                     <?php
-                    $i=1;
+                    $i = 1;
                     foreach ($leastSoldItemsYear as $row) {
                         ?>
                         <tr>
@@ -79,13 +86,13 @@
                 </tbody>
             </table>
         </div>
-        
+
         <div class="col-5 itemsList">
             <table class="table container cent">
-                <h5>הנמכרים ביותר</h5>
+                <h4>הנמכרים ביותר</h4>
                 <tbody>
                     <?php
-                    $i=1;
+                    $i = 1;
                     foreach ($mostSoldItemsYear as $row) {
                         ?>
                         <tr>

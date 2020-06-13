@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <p id="error"></p>
     <?php echo form_open('ReservesTables_controller/saveTableNotes'); ?>
     <fieldset class="center">
@@ -13,7 +18,8 @@
         <input type="radio" id="insideChoice" class="radioLocation" name="location" value="בפנים" ><label class="radioLabel">בפנים</label>
 
         <div class="inputWrapper"><input id="submitReservation" class="submitBtn" type="button" value="הבא" name="submitItem" ></div>
-            <?php echo form_close(); ?>
+    </fieldset>
+    <?php echo form_close(); ?>
 </main>
 <script>
 
@@ -26,14 +32,6 @@
         var diners_number = $("#diners_number").val();
         var location = document.querySelector('input[name="location"]:checked').value;
 
-//<?php
-//$now = time();
-//$twoPm = mktime(order_time);
-//
-//if($twoPm<$now){
-//    alert($twoPm);
-//}
-//?>
 
         $.ajax({
             type: 'POST',

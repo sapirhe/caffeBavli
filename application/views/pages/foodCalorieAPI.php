@@ -1,5 +1,9 @@
 <main>
-
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <h3 class="title">ערכים תזונתיים</h3>
 
 
@@ -12,13 +16,13 @@
                         <input id="query" type="text" name="query" /> </div>
                     <div class="inputWrapper"><input class="submitBtn" name="submit" type="submit" value="הצג ערכים תזונתיים" ></div>
                 </fieldset>
-<!--                <a class="inputWrapper center" id="btnTranslate" href="#"> לתרגום שם הפריט שברצונך לחפש לאנגלית לחץ/י כאן</a>
-                <div id="translate">  
-                    <div> 
-                        <center><object type="text/html" data="https://www.morfix.co.il/" width="600px" height="150px">
-                            </object></center>
-                    </div>
-                </div>-->
+                <!--                <a class="inputWrapper center" id="btnTranslate" href="#"> לתרגום שם הפריט שברצונך לחפש לאנגלית לחץ/י כאן</a>
+                                <div id="translate">  
+                                    <div> 
+                                        <center><object type="text/html" data="https://www.morfix.co.il/" width="600px" height="150px">
+                                            </object></center>
+                                    </div>
+                                </div>-->
             </form>
         </div>
 
@@ -63,23 +67,23 @@
                     echo '<div class="itemValuesArea">';
                     echo '<h4 class="itemValuesTitle">' . $response["hints"][$i]['food']['label'] . '</h4><br>';
                     if (isset($response["hints"][$i]['food']['nutrients']['ENERC_KCAL'])) {
-                        $energy=number_format((float)$response["hints"][$i]['food']['nutrients']['ENERC_KCAL'], 2, '.', '');
+                        $energy = number_format((float) $response["hints"][$i]['food']['nutrients']['ENERC_KCAL'], 2, '.', '');
                         echo '<b>אנרגיה: </b>' . $energy . ' קלוריות<br>';
                     }
                     if (isset($response["hints"][$i]['food']['nutrients']['FAT'])) {
-                        $fat=number_format((float)$response["hints"][$i]['food']['nutrients']['FAT'], 2, '.', '');
+                        $fat = number_format((float) $response["hints"][$i]['food']['nutrients']['FAT'], 2, '.', '');
                         echo '<b>שומן: </b>' . $fat . ' גרם<br>';
                     }
                     if (isset($response["hints"][$i]['food']['nutrients']['PROCNT'])) {
-                        $procnt=number_format((float)$response["hints"][$i]['food']['nutrients']['PROCNT'], 2, '.', '');
+                        $procnt = number_format((float) $response["hints"][$i]['food']['nutrients']['PROCNT'], 2, '.', '');
                         echo '<b>חלבון: </b>' . $procnt . ' גרם<br>';
                     }
                     if (isset($response["hints"][$i]['food']['nutrients']['FIBTG'])) {
-                        $fibtg=number_format((float)$response["hints"][$i]['food']['nutrients']['FIBTG'], 2, '.', '');
-                        echo '<b>חלבון: </b>' . $fibtg . ' גרם<br>';
+                        $fibtg = number_format((float) $response["hints"][$i]['food']['nutrients']['FIBTG'], 2, '.', '');
+                        echo '<b>סיבים: </b>' . $fibtg . ' גרם<br>';
                     }
                     if (isset($response["hints"][$i]['food']['nutrients']['CHOCDF'])) {
-                        $chocdf=number_format((float)$response["hints"][$i]['food']['nutrients']['CHOCDF'], 2, '.', '');
+                        $chocdf = number_format((float) $response["hints"][$i]['food']['nutrients']['CHOCDF'], 2, '.', '');
                         echo '<b>כולסטרול: </b>' . $chocdf . ' מ"ג<br><br>';
                     }
                     if (isset($response["hints"][$i]['food']['image'])) {

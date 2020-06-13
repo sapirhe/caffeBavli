@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <div class="col-md-2 tab">
         <button class="tablinks active" onclick="openInfo(event, 'breakfast')" id="defaultOpen">ארוחות בוקר</button>
         <button class="tablinks" onclick="openInfo(event, 'sandwiches')">כריכים</button>
@@ -227,6 +232,30 @@
         </table>
     </div>
 
+
+   <!-- Trigger the modal with a button -->
+    <button type="button" id="deleteItemFromMenuBtn" class="btn btn-info btn-lg disableModalBtn" data-toggle="modal" data-target="#myModal" hidden="hidden"></button>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+         
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title">מחיקת פריט מהתפריט<h4></center>
+                                </div>
+                                <div class="modal-body">
+                                    <p>האם ברצונך למחוק את הפריט מהתפריט?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="confirmDelete" class="btn btn-default btn-success" data-dismiss="modal"><b>אישור</b></button>
+                                    <button type="button" id="cancelDelete" class="btn btn-default btn-danger" data-dismiss="modal"><b>ביטול</b></button>
+                                </div>
+                                </div>
+
+                                </div>
+                                </div>
+
 </main>
 
 <script>
@@ -258,13 +287,13 @@
 </script>
 <script>
     function deleteItem(item_name) {
-        var r = confirm("אתה בטוח שברצונך למחוק את הפריט?");
-        if (r == true) {
-            window.location.href = '<?php echo site_url(); ?>/MenuEdit_controller/deleteItem?item_name=' + item_name + "'";
-        }
+        $('#deleteItemFromMenuBtn').click();
+        $('#confirmDelete').on("click", function () {
+              window.location.href = '<?php echo site_url(); ?>/MenuEdit_controller/deleteItem?item_name=' + item_name + "'";
+         });
     }
     function update(item_name) {
-        window.location.href = '<?php echo site_url(); ?>/MenuEdit_controller/editItem?item_name='+item_name+"'";
+        window.location.href = '<?php echo site_url(); ?>/MenuEdit_controller/editItem?item_name=' + item_name + "'";
 
     }
 </script>

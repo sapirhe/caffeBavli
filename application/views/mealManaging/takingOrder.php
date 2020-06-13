@@ -1,4 +1,9 @@
 <main>
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <div class="col-md-2 tab" id="menuTabs">
         <button class="tablinks active" onclick="openInfo(event, 'breakfast')" id="breakfastTab">ארוחות בוקר</button>
         <button class="tablinks" onclick="openInfo(event, 'sandwiches')" id="sandwichesTab">כריכים</button>
@@ -68,7 +73,6 @@
 
 
 
-
     <div id="orderItems" class="col-4">
         <h3>שולחן <?php echo $table_number; ?></h3>
         <p>מספר הזמנה: <?php echo $order_info[0]['order_number']; ?></p>
@@ -77,7 +81,7 @@
         <div id="list">
             <?php foreach ($items_in_order as $item) { ?>
                 <div>
-                    <button class='deleteFromOrder' id="<?php echo $item['item_number']; ?>"></button>
+                    <button class='deleteFromOrder' id="<?php echo $item['item_number']; ?>" onclick="deleteFromOrder(<?php echo $item['item_number']; ?>)"></button>
                     <p class='itemInOrderTxt'><?php echo $item['item_name']; ?></p>
                     <?php if ($item['notes'] != null) { ?>
                         <p class='notesForItem'><?php echo $item['notes']; ?></p>
@@ -96,81 +100,140 @@
 
     </div>
 
-</main>
+    <!--         Trigger the modal with a button -->
+    <button type="button" id="notesToItem" class="btn btn-info btn-lg disableModalBtn" data-toggle="modal" data-target="#myModalNotes" hidden="hidden"></button>
+
+    <!--         Modal -->
+    <div id="myModalNotes" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!--                 Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title">האם יש לך הערות לפריט?</h4></center>
+                </div>
+                <div class="modal-body">
+                    <input id="itemNotes" name="itemNotes" type="text" class="form-control" placeholder="הקלד/י את הערותיך">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="addNotesBtn" class="btn btn-default btn-success" data-dismiss="modal"><b>אישור</b></button>
+                    <button type="button" id="cancelNotesBtn" class="btn btn-default btn-danger" data-dismiss="modal"><b>ביטול</b></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="deleteItemBtn" class="btn btn-info btn-lg disableModalBtn" data-toggle="modal" data-target="#myModal" hidden="hidden"></button>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
 
-<script>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <center><h4 class="modal-title">מחיקת פריט מההזמנה<h4></center>
+                                </div>
+                                <div class="modal-body">
+                                    <p>האם ברצונך למחוק את הפריט מההזמנה?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="confirmDelete" class="btn btn-default btn-success" data-dismiss="modal"><b>אישור</b></button>
+                                    <button type="button" id="cancelDelete" class="btn btn-default btn-danger" data-dismiss="modal"><b>ביטול</b></button>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </main>
 
-    function openInfo(evt, tabName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
 
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
+                                <script>
 
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(tabName).style.display = "inline-block";
-        evt.currentTarget.className += " active";
-    }
-</script>
-<script>
-    // Get the element with id="defaultOpen" and click on it
-<?php if (isset($tab_id)) { ?>
-        document.getElementById("<?php echo $tab_id; ?>").click();
-<?php } ?>
-</script>
-<script>
-    function addToList(item_name) {
-        var notes = prompt("הערות:", "");
-        var order_number =<?php echo $order_info[0]['order_number']; ?>;
-        var tabId = $('#menuTabs').find('button.active').attr('id');
+                                    function openInfo(evt, tabName) {
+                                        // Declare all variables
+                                        var i, tabcontent, tablinks;
+                                        // Get all elements with class="tabcontent" and hide them
+                                        tabcontent = document.getElementsByClassName("tabcontent");
+                                        for (i = 0; i < tabcontent.length; i++) {
+                                            tabcontent[i].style.display = "none";
+                                        }
 
-        $.ajax({
-            type: "POST",
-            url: "<?php echo site_url(); ?>" + "/MealManaging_controller/saveOrder",
-            data: {item_name: item_name, notes: notes, order_number: order_number, tab_id: tabId},
-            error: function () {
-                alert('Something is wrong');
-            },
-            success: function (data) {
-                window.location.href = "<?php echo site_url(); ?>/MealManaging_controller/takingOrder?table_number=<?php echo $table_number; ?>&tab_id="+data+"";
-                            }
-                        });
-                    }
-</script>
-<script>
-    $(".deleteFromOrder").click(function () {
-        deleteFromOrder($(this).attr("id"));
-        $(this).next().remove();
-        $(this).remove();
-        
-    });
-    function deleteFromOrder(item_number_to_delete) {
-        var r = confirm("להסיר את הפריט מההזמנה?");
-        var tabId = $('#menuTabs').find('button.active').attr('id');
-        if (r == true) {
+                                        // Get all elements with class="tablinks" and remove the class "active"
+                                        tablinks = document.getElementsByClassName("tablinks");
+                                        for (i = 0; i < tablinks.length; i++) {
+                                            tablinks[i].className = tablinks[i].className.replace(" active", "");
+                                        }
 
-            $.ajax({
-                type: "POST",
-                url: "<?php echo site_url(); ?>" + "/MealManaging_controller/deleteItemOrder",
-                data: {item_number_to_delete: item_number_to_delete, tab_id: tabId},
-                error: function () {
-                    alert('Something is wrong');
-                },
-                success: function (data) {
-                    window.location.href = "<?php echo site_url(); ?>/MealManaging_controller/takingOrder?table_number=<?php echo $table_number; ?>&tab_id="+data+"";
+                                        // Show the current tab, and add an "active" class to the button that opened the tab
+                                        document.getElementById(tabName).style.display = "inline-block";
+                                        evt.currentTarget.className += " active";
                                     }
-                                });
-                            }
+                                </script>
+                                <script>
+<?php if (isset($tab_id)) { ?>
+                                        document.getElementById("<?php echo $tab_id; ?>").click();
+<?php } ?>
+                                </script>
+                                <script>
+                                    function addToList(item_name) {
+                                        var notes;
+                                        $('#notesToItem').click();
+                                        $("#addNotesBtn").click(function () {
+                                            notes = $('#itemNotes').val();
+                                            var order_number =<?php echo $order_info[0]['order_number']; ?>;
+                                            var tabId = $('#menuTabs').find('button.active').attr('id');
 
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "<?php echo site_url(); ?>" + "/MealManaging_controller/saveOrder",
+                                                data: {item_name: item_name, notes: notes, order_number: order_number, tab_id: tabId},
+                                                error: function () {
+                                                    alert('Something is wrong');
+                                                },
+                                                success: function (data) {
+                                                    window.location.href = "<?php echo site_url(); ?>/MealManaging_controller/takingOrder?table_number=<?php echo $table_number; ?>&tab_id=" + data + "";
+                                                }
+                                            });
 
-                        }
-</script>
+                                        });
+                                        $("#cancelNotesBtn").click(function () {
+                                            notes = "";
+                                            var order_number =<?php echo $order_info[0]['order_number']; ?>;
+                                            var tabId = $('#menuTabs').find('button.active').attr('id');
+
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "<?php echo site_url(); ?>" + "/MealManaging_controller/saveOrder",
+                                                data: {item_name: item_name, notes: notes, order_number: order_number, tab_id: tabId},
+                                                error: function () {
+                                                    alert('Something is wrong');
+                                                },
+                                                success: function (data) {
+                                                    window.location.href = "<?php echo site_url(); ?>/MealManaging_controller/takingOrder?table_number=<?php echo $table_number; ?>&tab_id=" + data + "";
+                                                }
+                                            });
+
+                                        });
+                                    }
+                                </script>
+                                <script>
+                                    //
+                                    function deleteFromOrder(item_number_to_delete) {
+                                        var tabId = $('#menuTabs').find('button.active').attr('id');
+                                        $("#deleteItemBtn").click();
+
+                                        $('#confirmDelete').on("click", function () {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "<?php echo site_url(); ?>" + "/MealManaging_controller/deleteItemOrder",
+                                                data: {item_number_to_delete: item_number_to_delete, tab_id: tabId},
+                                                error: function () {
+                                                    alert('Something is wrong');
+                                                },
+                                                success: function (data) {
+                                                    window.location.href = "<?php echo site_url(); ?>/MealManaging_controller/takingOrder?table_number=<?php echo $table_number; ?>&tab_id=" + data + "";
+                                                }
+                                            });
+                                        });
+                                    }
+                                </script>

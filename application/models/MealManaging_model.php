@@ -67,7 +67,7 @@ class MealManaging_model extends CI_Model {
 
     public function occupidTable($table_number, $order_number) {
         $this->db->query("update tables set availability='תפוס' where table_number='" . $table_number . "'");
-        $this->db->query("update iteminorder set sent='נשלח' where order_number='" . $order_number . "'");
+        $this->db->query("update iteminorder set sent='נשלח' where order_number='" . $order_number . "' and sent='לא נשלח'");
 
     }
 

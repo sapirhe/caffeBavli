@@ -1,5 +1,9 @@
 <main>
-
+    <?php
+    if (!isset($_SESSION['id'])) {
+        redirect('Pages_Controller/session_expired');
+    }
+    ?>
     <h3 class="title">רשימת העובדים</h3>
 
 
@@ -41,7 +45,7 @@
 </main>
 <script>
     function goToEditEmployee(user_number) {
-        window.location.href = '<?php echo site_url(); ?>/EmployeesManagement_controller/employeeEdit?employee_number='+user_number+'';
+        window.location.href = '<?php echo site_url(); ?>/EmployeesManagement_controller/employeeEdit?employee_number=' + user_number + '';
 
     }
 </script>

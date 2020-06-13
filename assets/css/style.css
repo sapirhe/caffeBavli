@@ -1,7 +1,6 @@
 body{
     direction: rtl;
     text-align: right;
-
 }
 .tablet {
     position: relative;
@@ -541,6 +540,9 @@ h4{
     background-position: center;
 
 }
+#cash{
+    overflow-y: hidden;
+}
 .payLbl{
     width: 30%;
     display: inline-block;
@@ -570,7 +572,7 @@ h4{
     background-repeat: no-repeat;
     width: 100%;
     background-position: center;
-    margin-top: 20px;
+    margin-top: 7px;
 }
 .cardLab{
     width:100%;
@@ -702,7 +704,7 @@ submitNewReservation{
 #editPass{
     display: none;
 }
-#passEdit{
+.subBtn{
     float:right;
     width:95%;
     margin-bottom: 3%;
@@ -729,4 +731,12 @@ submitNewReservation{
     position: absolute;
     text-align: center;
     margin-right: 27px;
+}
+#session_expired{
+    background-color: none;
+    background-image: url("../Images/session_expired.jpg");
+    background-size: contain;
+    width: 120px;
+    height: 120px;
+    margin-top: 80px;
 }

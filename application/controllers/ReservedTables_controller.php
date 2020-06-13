@@ -62,11 +62,13 @@ class ReservedTables_controller extends CI_Controller {
             if ($orderDate < $today) {
                 $error.="מועד ההזמנה חלף" . '<br>';
             }
-            if ($orderDate==$today && $_POST['order_time']<time()){
-                $error.="שעת ההזמנה חלפה" . '<br>';
+            $time=time();
+            if ($orderDate==$today && (strtotime($_POST['order_time'])- (strtotime(date('H:i'),$time))- 60*60)<0){
+                $error.="שעת ההזמנה חלפה".'<br>';
             }
         }
         return $error;
+        
     }
 
     public function tablesToChoose() {
@@ -202,10 +204,14 @@ class ReservedTables_controller extends CI_Controller {
             if (!preg_match("/^[0-9]*$/", $_POST['new_diner_phone']) || strlen($_POST['new_diner_phone']) != 10) {
                 $error.="טלפון המזמין יכול להכיל 10 ספרות " . '<br>';
             }
-            $orderDate = new DateTime($_POST['new_order_date']);
-            $today = new DateTime();
+            $orderDate = $_POST['new_order_date'];
+            $today = date('Y-m-d');
             if ($orderDate < $today) {
-                $error.="מועד ההזמנה עבר" . '<br>';
+                $error.=$orderDate." ".$today."מועד ההזמנה חלף" . '<br>';
+            }
+            $time=time();
+            if ($orderDate==$today && (strtotime($_POST['new_order_time'])- (strtotime(date('H:i'),$time))- 60*60)<0){
+                $error.="שעת ההזמנה חלפה".'<br>';
             }
         }
         return $error;
