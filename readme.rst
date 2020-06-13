@@ -1,4 +1,10 @@
 ###################
+Caffe Bavli system
+###################
+
+This repository contains Caffe Bavli system code
+
+###################
 What is CodeIgniter
 ###################
 
