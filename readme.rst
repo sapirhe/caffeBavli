@@ -1,13 +1,4 @@
 ###################
-Caffe Bavli system
-###################
-
-This repository contains Caffe Bavli system code.
-The workspace is codeigniter, wrriten in html 5, php, css, JavaScript and JQuery, using Bootstrap.
-
-© Sapir Hen, Maya Greenbaum & Almog Davidof 
-
-###################
 What is CodeIgniter
 ###################
 

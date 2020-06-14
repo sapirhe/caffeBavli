@@ -1,7 +1,7 @@
 <main>
     <?php
     if (!isset($_SESSION['id'])) {
-        redirect('Pages_Controller/session_expired');
+        redirect('Pages_controller/session_expired');
     }
     ?>
     <div class="area">

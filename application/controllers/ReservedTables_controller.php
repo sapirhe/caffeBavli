@@ -63,7 +63,7 @@ class ReservedTables_controller extends CI_Controller {
                 $error.="מועד ההזמנה חלף" . '<br>';
             }
             $time=time();
-            if ($orderDate==$today && (strtotime($_POST['order_time'])- (strtotime(date('H:i'),$time))- 60*60)<0){
+            if ($orderDate==$today && (strtotime($_POST['order_time'])- (strtotime(date('H:i'),$time))- 60*60*3)<0){
                 $error.="שעת ההזמנה חלפה".'<br>';
             }
         }
@@ -210,7 +210,7 @@ class ReservedTables_controller extends CI_Controller {
                 $error.=$orderDate." ".$today."מועד ההזמנה חלף" . '<br>';
             }
             $time=time();
-            if ($orderDate==$today && (strtotime($_POST['new_order_time'])- (strtotime(date('H:i'),$time))- 60*60)<0){
+            if ($orderDate==$today && (strtotime($_POST['new_order_time'])- (strtotime(date('H:i'),$time))- 60*60*3)<0){
                 $error.="שעת ההזמנה חלפה".'<br>';
             }
         }

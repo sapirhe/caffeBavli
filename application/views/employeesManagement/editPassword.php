@@ -1,7 +1,7 @@
 <main><br>
     <?php
     if (!isset($_SESSION['id'])) {
-        redirect('Pages_Controller/session_expired');
+        redirect('Pages_controller/session_expired');
     }
     echo form_open('EmployeesManagement_controller/editPasswordNotes'); ?>
     <fieldset class="center">
