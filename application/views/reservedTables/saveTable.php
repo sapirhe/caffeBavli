@@ -42,7 +42,7 @@
             },
             success: function (data) {
                 if (isNaN(data) === false) {
-                    window.location.href = "<?php echo site_url(); ?>/ReservedTables_controller/tablesToChoose?reservation_number=" + data + "&location=" + location + "&diners_number=" + diners_number + "";
+                    window.location.href = "<?php echo site_url(); ?>/ReservedTables_controller/tablesToChoose?reservation_number=" + data + "&location=" + location + "&diners_number=" + diners_number + "&order_date="+order_date+"&order_time="+order_time+"";
 
                 }
                 else {

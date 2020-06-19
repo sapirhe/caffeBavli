@@ -8,15 +8,28 @@
     <p id="error"></p>
     <div class="area" id="relevantTablesArea">
         <h4><?php echo "בחר/י מבין השולחנות הרלוונטיים " . $location; ?></h4>
-        <?php foreach ($relevant_tables as $tbl) { ?>
-            <div class="input-radio"><input type="radio" class="tblBtn" id="<?php echo $tbl['table_number']; ?>" name="tblBtn" value="<?php echo $tbl['table_number']; ?>"> <label for="<?php echo $tbl['table_number']; ?>"><?php echo $tbl['table_number']; ?></label></div>
-
-        <?php }
+        <?php
+        $specificRelevantTables = array();
+        $sameTimeRes = array();
+        foreach ($same_time_res as $same) {
+            array_push($sameTimeRes, $same['table_number']);
+        }
+        foreach ($relevant_tables as $tbl) {
+            array_push($specificRelevantTables, $tbl['table_number']);
+        }
+        $releventTables = array_diff($specificRelevantTables, $sameTimeRes);
+        foreach ($releventTables as $tbl) {
+            ?>
+            <div class="input-radio"><input type="radio" class="tblBtn" id="<?php echo $tbl; ?>" name="tblBtn" value="<?php echo $tbl; ?>"> <label for="<?php echo $tbl; ?>"><?php echo $tbl; ?></label></div>
+            <?php
+        }
         ?>
     </div>
-    <div class="inputWrapper"><label id="lblNotes"><b>הערות: </b></label><textarea col3="30" rows="3" class="formInput" placeholder="הקלד/י את הערתך" id="writeNotes" name="writeNotes"><?php if (isset($notes)) {
-            echo $notes;
-        } ?></textarea></div>
+    <div class="inputWrapper"><label id="lblNotes"><b>הערות: </b></label><textarea col3="30" rows="3" class="formInput" placeholder="הקלד/י את הערתך" id="writeNotes" name="writeNotes"><?php
+            if (isset($notes)) {
+                echo $notes;
+            }
+            ?></textarea></div>
     <input type="button" value="שמור" id="saveReservationBtn" class="submitBtn">
 
     <!-- Trigger the modal with a button -->

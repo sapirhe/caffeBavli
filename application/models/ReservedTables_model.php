@@ -32,6 +32,14 @@ class ReservedTables_model extends CI_Model {
         return false;
     }
 
+    public function getSameTimeRes($order_date, $order_time){
+        $query = $this->db->query("select table_number from reserved_tables where order_date='".$order_date."' and order_time='".$order_time."'");
+
+        if ($query) {
+            return $query->result_array();
+        }
+        return false;
+    }
     public function setReservationTableNumber($data) {
         $this->db->db_debug = FALSE;
         $error = NULL;

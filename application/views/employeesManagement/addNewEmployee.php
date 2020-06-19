@@ -11,7 +11,7 @@
         <div class="inputWrapper"><input class="formInput addNewEmpInput" placeholder="תעודת זהות" type="text" id="id" name="id" required></div>
         <div class="inputWrapper"><input class="formInput addNewEmpInput" placeholder="שם פרטי" type="text" id="first_name" name="first_name" required></div>
         <div class="inputWrapper"><input class="formInput addNewEmpInput" placeholder="שם משפחה" type="text" id="last_name" name="last_name" required></div>
-        <div><lable><b>סוג עובד: </b></lable><br><select id="etype" name="etype" size="1">
+        <div><lable class="moveSelectLbl"><b>סוג עובד: </b></lable><br><select id="etype" name="etype" size="1">
                 <option value="מלצר"> מלצר</option>
                 <option value="ברמן"> ברמן</option>
                 <option value="טבח"> טבח</option>    

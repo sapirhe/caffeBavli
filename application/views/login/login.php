@@ -1,17 +1,17 @@
 <main>
     <i class="fa fa-user fa-5x icon sgnIcn"> </i>
-        <p id="error"></p>
-        <?php echo form_open('Login_controller/auth'); ?>
-        <fieldset class="center" id="signInForm">
-            <legend>התחבר כאן</legend>
-            <div class="inputWrapper"><input class="formInput" id="id" placeholder="תעודת זהות" type="text" name="id"></div>
-            <div class="inputWrapper"><input class="formInput" id="password" placeholder="סיסמה" type="password" name="password"></div>
-            <div class="inputWrapper"><input id="signin" type="button" value="התחבר" name="signin">
-                </fieldset>
-                <?php echo form_close(); ?>
+    <p id="error"></p>
+    <?php echo form_open('Login_controller/auth'); ?>
+    <fieldset class="center" id="signInForm">
+        <legend>התחבר כאן</legend>
+        <div class="inputWrapper"><input class="formInput" id="id" placeholder="תעודת זהות" type="text" name="id"></div>
+        <div class="inputWrapper"><input class="formInput" id="password" placeholder="סיסמה" type="password" name="password"></div>
+        <div class="inputWrapper"><input id="signin" type="button" value="התחבר" name="signin">
+    </fieldset>
+    <?php echo form_close(); ?>
 
-            </main>
-            <script>
+</main>
+<script>
                 $("#signin").click(function () {
 
                     var id = $("#id").val();
@@ -34,7 +34,7 @@
                         }
                     });
                 });
-            </script>
+</script>
 
 
 

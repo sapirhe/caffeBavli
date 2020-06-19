@@ -18,6 +18,8 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" language="javascript" ></script>
+    <head profile="http://www.w3.org/2005/10/profile">
+        <link rel="icon" type="image/png" href="<?php echo base_url() . "assets/Images/caffeBavliLogo.jpg"; ?>" />
         <script src="js/appParse.js" type="text/javascript" language="javascript" ></script>
         <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="css/style.css" type="text/css" rel="stylesheet" />
@@ -27,7 +29,7 @@
             <header>
                 <span id="datetime"></span>
 
-                <img id="caffeBavliImg" class="center" src='<?php echo base_url() . "assets/Images/caffeBavliLogo.jpg"; ?>'>
+                <a href="<?php echo site_url(); ?>/Pages_controller/HomePage"><img id="caffeBavliImg" class="center" src='<?php echo base_url() . "assets/Images/caffeBavliLogo.jpg"; ?>'></a>
 
                 <nav class="navbar navbar-expand">
                     <div class="container-fluid">
@@ -55,7 +57,7 @@
                     }
                     ?> </p>
                 <hr class="line">
-                
+
             </header>
 
 

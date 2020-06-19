@@ -12,12 +12,12 @@
         <div class="inputWrapper"><input class="formInput" value="<?php echo $itemToEdit[0]['item_name']; ?>" type="text" id="new_item_name" name="new_item_name" required></div>
         <div class="inputWrapper"><textarea col3="30" rows="3" class="formInput" id="new_description" name="new_description" ><?php echo $itemToEdit[0]['description']; ?></textarea></div>
         <div class="inputWrapper"><input class="formInput" value="<?php echo $itemToEdit[0]['price']; ?>" type="text" id="new_price" name="new_price" required></div>
-        <div><lable>מבצע ההזמנה:  </lable><br><select id="new_execType" name="new_execType" size="1">
+        <div><lable class="moveSelectLbl"><b>מבצע ההזמנה:</b></lable><br><select id="new_execType" name="new_execType" size="1">
                 <option value="<?php echo $itemToEdit[0]['executer']; ?>"> <?php echo $itemToEdit[0]['executer']; ?></option>
                 <option value="ברמן"> ברמן</option>
                 <option value="טבח"> טבח</option>    
             </select></div>
-        <div><lable>מחלקה:  </lable><br><select id="new_section" name="new_section" size="1">
+        <div><lable class="moveSelectLbl"><b>מחלקה:</b></lable><br><select id="new_section" name="new_section" size="1">
                 <option value="<?php echo $itemToEdit[0]['section']; ?>"> <?php echo $itemToEdit[0]['section']; ?></option>
                 <option value="בוקר"> ארוחות בוקר</option>
                 <option value="טוסטים"> טוסטים</option>

@@ -13,7 +13,7 @@
         <div class="inputWrapper"><input class="formInput " type="text" id="new_id" name="new_id" value="<?php echo $employeeToEdit[0]['id']; ?>" required></div>
         <div class="inputWrapper"><input class="formInput " type="text" id="new_first_name" name="new_first_name" value="<?php echo $employeeToEdit[0]['first_name']; ?>" required></div>
         <div class="inputWrapper"><input class="formInput " type="text" id="new_last_name" name="new_last_name" value="<?php echo $employeeToEdit[0]['last_name']; ?>" required></div>
-        <div><lable><b>סוג עובד: </b></lable><br><select id="new_etype" name="new_etype" size="1">
+        <div><lable class="moveSelectLbl"><b>סוג עובד: </b></lable><br><select id="new_etype" name="new_etype" size="1">
                 <option value="<?php echo $employeeToEdit[0]['type']; ?>"><?php echo $employeeToEdit[0]['type']; ?></option>
                 <option value="מלצר"> מלצר</option>
                 <option value="ברמן"> ברמן</option>

@@ -55,33 +55,33 @@
                                     echo " - " . $item['notes'];
                                 }
                                 ?></p>
-                <?php
-            }
-        }
-        ?>
+                            <?php
+                        }
+                    }
+                    ?>
                     <button class="orderComplete" onclick="orderComplete(<?php echo $order['order_number']; ?>)">בוצע</button>
                 </div>
             </div>
 
-        <?php
+            <?php
+        }
     }
-}
-?>
+    ?>
 
 
 
 </main>
 <script>
     function orderComplete(order_number) {
-        window.location.href = '<?php echo site_url(); ?>/MealManaging_controller/orderComplete?order_number='+order_number+"'";
+        window.location.href = '<?php echo site_url(); ?>/MealManaging_controller/orderComplete?order_number=' + order_number + "'";
 
     }
 
 </script>
-<script type="text/javascript">    
-    setInterval(function() {
-                  window.location.reload();
-                }, 60000); 
+<script type="text/javascript">
+    setInterval(function () {
+        window.location.reload();
+    }, 60000);
 </script>
 
 

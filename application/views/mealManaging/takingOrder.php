@@ -170,9 +170,9 @@
                                     }
                                 </script>
                                 <script>
-<?php if (isset($tab_id)) { ?>
+                                <?php if (isset($tab_id)) { ?>
                                         document.getElementById("<?php echo $tab_id; ?>").click();
-<?php } ?>
+                                <?php } ?>
                                 </script>
                                 <script>
                                     function addToList(item_name) {

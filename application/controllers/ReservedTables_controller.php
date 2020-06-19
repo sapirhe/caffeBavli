@@ -37,7 +37,7 @@ class ReservedTables_controller extends CI_Controller {
             if ($info == NULL) {
                 $data['info'] = array("message" => $reservation_number[0]['MAX(order_number)']);
             } else {
-                $data['info'] = array("message" => $info);
+                $data['info'] = array("message" => "קיימת הזמנה עבור לקוח זה במועד המבוקש");
             }
             print_r($data['info']['message']);
         } else {
@@ -78,6 +78,8 @@ class ReservedTables_controller extends CI_Controller {
         $data['location'] = $this->input->get('location');
         $data['notes'] = $this->input->get('notes');
         $diners_number = $this->input->get('diners_number');
+        $order_date = $this->input->get('order_date');
+        $order_time = $this->input->get('order_time');
         if($this->input->get('currentTblNumber')){
             $data['currentTblNumber'] = $this->input->get('currentTblNumber');
         }
@@ -95,6 +97,7 @@ class ReservedTables_controller extends CI_Controller {
             $data['diners_number'] = 8;
         }
         $data['relevant_tables'] = $this->ReservedTables_model->getRelevantTables($data['location'], $data['diners_number']);
+        $data['same_time_res'] = $this->ReservedTables_model->getSameTimeRes($order_date, $order_time);
 
         $this->load->view('templates/header', $data);
         $this->load->view('reservedTables/tablesToChoose', $data);
@@ -184,7 +187,7 @@ class ReservedTables_controller extends CI_Controller {
             if ($info == NULL) {
                 $data['info'] = array("message" => "1");
             } else {
-                $data['info'] = array("message" => $info);
+                $data['info'] = array("message" => "לא קיימות הזמנות במועד זה");
             }
             print_r($data['info']['message']);
         } else {

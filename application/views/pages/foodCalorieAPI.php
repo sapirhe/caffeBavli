@@ -9,23 +9,14 @@
 
     <div id="mainWrraper">
         <div id="searchWrraper">
-
             <form action="" method="get">
                 <fieldset class="center">
                     <div class="inputWrapper"><label for="query"><b>הזן/י את שם הפריט:</b></label>
                         <input id="query" type="text" name="query" /> </div>
                     <div class="inputWrapper"><input class="submitBtn" name="submit" type="submit" value="הצג ערכים תזונתיים" ></div>
                 </fieldset>
-                <!--                <a class="inputWrapper center" id="btnTranslate" href="#"> לתרגום שם הפריט שברצונך לחפש לאנגלית לחץ/י כאן</a>
-                                <div id="translate">  
-                                    <div> 
-                                        <center><object type="text/html" data="https://www.morfix.co.il/" width="600px" height="150px">
-                                            </object></center>
-                                    </div>
-                                </div>-->
             </form>
         </div>
-
 
 
 
@@ -100,11 +91,3 @@
 
     </div>
 </main>
-
-<script>
-    $(document).ready(function () {
-        $("#btnTranslate").click(function () {
-            $("#translate").toggle();
-        });
-    });
-</script>

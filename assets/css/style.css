@@ -111,6 +111,12 @@ select{
     border-radius: 4%;
     border: 1px solid lightgrey;
 }
+fieldset select{
+    margin-right: 10px;
+}
+.moveSelectLbl{
+    margin-right: 10px;
+}
 textarea {
     width: 60%;
     margin-bottom: 3%;

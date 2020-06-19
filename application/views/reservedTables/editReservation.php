@@ -104,7 +104,7 @@
             },
             success: function (data) {
                 if (data === "1") {
-                    window.location.href = "<?php echo site_url(); ?>/ReservedTables_controller/tablesToChoose?reservation_number=" + order_number + "&location=" + new_location + "&diners_number=" + new_diners_number + "&currentTblNumber=" + new_table_number + "&notes=" + notes + "";
+                    window.location.href = "<?php echo site_url(); ?>/ReservedTables_controller/tablesToChoose?reservation_number=" + order_number + "&location=" + new_location + "&diners_number=" + new_diners_number + "&currentTblNumber=" + new_table_number + "&notes=" + notes + "&order_date="+new_order_date+"&order_time="+new_order_time+"";
                 }
                 else {
                     $("#error").html(data);

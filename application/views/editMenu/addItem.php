@@ -11,11 +11,11 @@
         <div class="inputWrapper"><input class="formInput" placeholder="שם המנה" type="text" id="item_name" name="item_name" required></div>
         <div class="inputWrapper"><textarea col3="30" rows="3" class="formInput" placeholder="תיאור" id="description" name="description" ></textarea></div>
         <div class="inputWrapper"><input class="formInput" placeholder="מחיר" type="text" id="price" name="price" required></div>
-        <div><lable>מבצע ההזמנה:  </lable><br><select id="execType" name="execType" size="1">
+        <div><lable class="moveSelectLbl"><b>מבצע ההזמנה: </b></lable><br><select id="execType" name="execType" size="1">
                 <option value="ברמן"> ברמן</option>
                 <option value="טבח"> טבח</option>    
             </select></div>
-        <div><lable>מחלקה:  </lable><br><select id="section" name="section" size="1">
+        <div><lable class="moveSelectLbl"><b>מחלקה:</b>  </lable><br><select id="section" name="section" size="1">
                 <option value="בוקר"> ארוחות בוקר</option>
                 <option value="טוסטים"> טוסטים</option>
                 <option value="כריכים"> כריכים</option>
